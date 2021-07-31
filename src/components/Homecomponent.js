@@ -24,6 +24,13 @@ class Home extends Component {
   }
   startGame() {
     this.setState({ game_started: true });
+    setTimeout(function () {
+      if (window.confirm("Time out")) {
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    }, 120000);
   }
   render() {
     return (
@@ -42,9 +49,16 @@ class Home extends Component {
           <Card style={{ width: "50%", margin: "auto" }}>
             <CardHeader tag="h3">Rules</CardHeader>
             <CardBody>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
+              <CardText style={{ textAlign: "left" }}>
+                1. Welcome to Word Builder game <br /> 2. Please read the rules
+                before starting game <br /> 3. Total game time is 2 minutes and
+                the timer starts once "Start Game" is clicked
+                <br /> 4. Once game started,enter any word in the given
+                field.The Bot displays word with respect to last letter of your
+                word <br />
+                5. Then continue game by entering next word in the field.The
+                next word should start with lastletter of bot word <br />
+                6. Enjoy the game and improve your vocabulary skills
               </CardText>
             </CardBody>
             <CardFooter>

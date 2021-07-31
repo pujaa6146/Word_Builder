@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Col, Row, InputGroup, Input, Button } from "reactstrap";
 import Timer from "./Timercomponent";
+import Home from "./Homecomponent";
 
 class Game extends Component {
   constructor(props) {
@@ -80,7 +81,21 @@ class Game extends Component {
     }
 
     pauseTimer();
+
+    // Execute a function when the user releases a key on the keyboard
+    document
+      .getElementById("user_input")
+      .addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          document.getElementById("myBtn").click();
+        }
+      });
   }
+
   updateUserInput() {
     let user_word = document.getElementById("user_input").value;
     if (
@@ -98,8 +113,8 @@ class Game extends Component {
     ).then((response) => {
       if (response.status == 404) {
         alert("Please enter a meaningful word");
+        return;
       }
-      return;
     });
 
     document.getElementById("user_input").value = "";
@@ -114,7 +129,7 @@ class Game extends Component {
     let user_lastletter = user_word[user_word.length - 1];
     let availsubjects = ["noun", "adjective", "animal"];
     fetch(
-      "https://random-word-form.herokuapp.com/random/" +
+      "https://generate-words-api.herokuapp.com/random/" +
         availsubjects[Math.floor(Math.random() * 3)] +
         "/" +
         user_lastletter
@@ -122,22 +137,29 @@ class Game extends Component {
       .then((response) => response.json())
       .then((data) => this.setState({ botword: data[0] }));
   }
+
   render() {
     return (
-      <Row>
-        <Col xs="4">
-          <InputGroup>
-            <Input id="user_input" placeholder="Enter any word" />
-          </InputGroup>
-          <Button style={{ margin: 10 }} onClick={this.updateUserInput}>
-            ENTER
-          </Button>
-        </Col>
-        <Col xs="4">{this.state.botword}</Col>
-        <Col xs="4">
-          <Timer />
-        </Col>
-      </Row>
+      <>
+        <Row>
+          <Col xs="4">
+            <InputGroup>
+              <Input id="user_input" placeholder="Enter any word" />
+            </InputGroup>
+            <Button
+              id="myBtn"
+              style={{ margin: 10 }}
+              onClick={this.updateUserInput}
+            >
+              ENTER
+            </Button>
+          </Col>
+          <Col xs="4">{this.state.botword}</Col>
+          <Col xs="4">
+            <Timer />
+          </Col>
+        </Row>
+      </>
     );
   }
 }
