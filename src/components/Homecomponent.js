@@ -50,15 +50,14 @@ class Home extends Component {
             <CardHeader tag="h3">Rules</CardHeader>
             <CardBody>
               <CardText style={{ textAlign: "left" }}>
-                1. Welcome to Word Builder game <br /> 2. Please read the rules
-                before starting game <br /> 3. Total game time is 2 minutes and
-                the timer starts once "Start Game" is clicked
-                <br /> 4. Once game started,enter any word in the given
-                field.The Bot displays word with respect to last letter of your
-                word <br />
-                5. Then continue game by entering next word in the field.The
-                next word should start with lastletter of bot word <br />
-                6. Enjoy the game and improve your vocabulary skills
+                1. Welcome to Word Builder game. <br /> 2. Please read the rules
+                before starting the game. <br /> 3. Total game time is 2 minutes
+                and the timer will start once "Start Game" is clicked.
+                <br /> 4. Enter any word in the given field for the Bot to
+                predict a new word based on your word's last alphabet. <br />
+                5. Carry on by following up with a new word starting with the
+                last alphabet of bot's word. <br />
+                6. Enjoy by improving your vocabulary!!!
               </CardText>
             </CardBody>
             <CardFooter>

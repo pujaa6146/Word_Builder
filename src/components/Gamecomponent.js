@@ -1,5 +1,16 @@
 import React, { Component } from "react";
-import { Container, Col, Row, InputGroup, Input, Button } from "reactstrap";
+import {
+  Container,
+  Col,
+  Row,
+  InputGroup,
+  Input,
+  Button,
+  Card,
+  CardText,
+  CardBody,
+  CardHeader,
+} from "reactstrap";
 import Timer from "./Timercomponent";
 import Home from "./Homecomponent";
 
@@ -154,7 +165,12 @@ class Game extends Component {
               ENTER
             </Button>
           </Col>
-          <Col xs="4">{this.state.botword}</Col>
+          <Col xs="4">
+            <Card>
+              <CardHeader>Bot-word</CardHeader>
+              <CardBody>{this.state.botword}</CardBody>
+            </Card>
+          </Col>
           <Col xs="4">
             <Timer />
           </Col>
